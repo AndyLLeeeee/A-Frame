@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<title>Document</title>
+	<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+	<script> 
+    $.ajax({ 
+        url:"http://map.oicqzone.com/gpsApi.php?lat=22.502412986242&lng=113.93832783228", 
+        type:'GET', 
+        dataType:'JSONP',  // 处理Ajax跨域问题
+        success: function(data){ 
+            $('body').append( "Name: " + data ); 
+        } 
+    }); 
+</script>
+</head>
+<body>
+	<a-scene>
+		<a-assets>
+			<a-asset-item id="modelObj" src="https://localhost:8080/resource/RemRem~.obj"></a-asset-item>
+			<a-asset-item id="modelMtl" src="https://localhost:8080/resource/RemRem~.mtl"></a-asset-item>
+		</a-assets>
+		<a-entity obj-model="obj: #modelObj;mtl: #modelMtl" scale="1 1 1" position="0 0 0"></a-entity>
+		<a-camera user-height="-2"></a-camera>
+	</a-scene>
+</body>
+</html>
